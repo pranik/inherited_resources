@@ -371,8 +371,10 @@ module InheritedResources
       #
       def inherited(base) #:nodoc:
         super(base)
-        base.send :initialize_resources_class_accessors!
-        base.send :create_resources_url_helpers!
+        unless base.name.nil?
+          base.send :initialize_resources_class_accessors!
+          base.send :create_resources_url_helpers!
+        end
       end
 
   end
